@@ -3,7 +3,7 @@ module simulator_upwind_base
     ! required MODULE
     use,     intrinsic :: iso_fortran_env
     use, non_intrinsic :: config
-    use, non_intrinsic :: simulator_base
+    use, non_intrinsic :: simulator_using_numerical_flux_base
 
 
 
@@ -19,7 +19,7 @@ module simulator_upwind_base
 
 
     ! TYPE declaration
-    type , abstract , extends(type_simulator_base) :: type_simulator_upwind_base
+    type , abstract , extends(type_simulator_using_numerical_flux_base) :: type_simulator_upwind_base
 
         ! additional field(s) for this TYPE
         ! NONE

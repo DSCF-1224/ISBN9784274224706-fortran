@@ -38,13 +38,12 @@ module simulator_base
         contains
 
         ! kind: FUNCTION
-        procedure( numerical_flux_abstract    ) , pass , public , deferred :: numerical_flux
         procedure( maxval_index_node_abstract ) , pass , public , deferred :: maxval_index_node
         procedure( minval_index_node_abstract ) , pass , public , deferred :: minval_index_node
+        procedure( quantity_change_abstract   ) , pass , public , deferred :: quantity_change
 
         ! kind: FUNCTION
         procedure ,   pass , private :: node_coordinate
-        procedure ,   pass , private :: quantity_change
         procedure ,   pass , private :: physical_flux_on_node
         procedure ,   pass , private :: physical_flux_abs_using_advected_quantity
         procedure ,   pass , private :: physical_flux_using_advected_quantity
@@ -68,26 +67,6 @@ module simulator_base
 
     ! INTERFACE declaration
     interface
-
-        pure elemental function numerical_flux_abstract ( simulator, index_node ) result(flux)
-
-            ! required TYPE(s) specification
-            import INT32
-            import REAL64
-            import type_simulator_base
-
-            ! bounded argument for this FUNCTION
-            class(type_simulator_base) , intent(in) :: simulator
-
-            ! unbounded argument(s) for this FUNCTION
-            integer(INT32) , intent(in) :: index_node
-
-            ! return value of this FUNCTION
-            real(REAL64) :: flux
-
-        end function numerical_flux_abstract
-
-
 
         pure elemental function maxval_index_node_abstract (simulator) result(index)
 
@@ -118,6 +97,26 @@ module simulator_base
             integer(INT32) :: index
 
         end function minval_index_node_abstract
+
+
+
+        pure elemental function quantity_change_abstract ( simulator, index_node ) result(quantity_change)
+
+            ! required TYPE(s) specification
+            import INT32
+            import REAL64
+            import type_simulator_base
+
+            ! bounded argument for this FUNCTION
+            class(type_simulator_base) , intent(in) :: simulator
+
+            ! unbounded argument(s) for this FUNCTION
+            integer(INT32) , intent(in) :: index_node
+
+            ! return value of this FUNCTION
+            real(REAL64) :: quantity_change
+
+        end function quantity_change_abstract
 
     end interface
 
@@ -230,37 +229,6 @@ module simulator_base
         end associate
 
     end function physical_flux_abs_using_advected_quantity
-
-
-
-    pure elemental function quantity_change ( simulator, index_node )
-
-        ! bounded argument for this FUNCTION
-        class(type_simulator_base) , intent(in) :: simulator
-
-        ! unbounded argument(s) for this FUNCTION
-        integer(INT32) , intent(in) :: index_node
-
-        ! return value of this FUNCTION
-        real(REAL64) :: quantity_change
-
-        ! variable(s) for this FUNCTION
-
-        associate ( &!
-            dt => simulator%step_time , &!
-            dx => simulator%step_node &!
-        )
-
-            quantity_change &!
-                = simulator%numerical_flux( index_node - 1_INT32 ) &!
-                - simulator%numerical_flux( index_node )
-
-            quantity_change = &!
-            quantity_change * dt / dx
-
-        end associate
-
-    end function quantity_change
 
 
 

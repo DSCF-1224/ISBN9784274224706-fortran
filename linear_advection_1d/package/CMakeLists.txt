@@ -16,6 +16,7 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/simulator_upwind_base.f90
     ${CMAKE_CURRENT_SOURCE_DIR}/simulator_upwind1.f90
     ${CMAKE_CURRENT_SOURCE_DIR}/simulator_upwind2.f90
+    ${CMAKE_CURRENT_SOURCE_DIR}/simulator_using_numerical_flux_base.f90
 )
 
 target_link_libraries( _linear_advection_1d PRIVATE _simple_errmsg_handler )

@@ -3,7 +3,7 @@ module simulator_ftcs
     ! required MODULE
     use,     intrinsic :: iso_fortran_env
     use, non_intrinsic :: config
-    use, non_intrinsic :: simulator_base
+    use, non_intrinsic :: simulator_using_numerical_flux_base
 
 
 
@@ -19,7 +19,7 @@ module simulator_ftcs
 
 
     ! TYPE declaration
-    type , extends(type_simulator_base) :: type_simulator_ftcs
+    type , extends(type_simulator_using_numerical_flux_base) :: type_simulator_ftcs
 
         ! additional field(s) for this TYPE
         ! NONE
