@@ -1,4 +1,4 @@
-module simulator_base
+module pkg_simulator_base
 
     ! required MODULE
     use,     intrinsic :: iso_fortran_env
@@ -459,4 +459,4 @@ module simulator_base
 
     end subroutine validate_conditions
 
-end module simulator_base
+end module pkg_simulator_base

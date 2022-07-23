@@ -1,9 +1,9 @@
-module simulator_ftcs
+module pkg_simulator_ftcs
 
     ! required MODULE
     use,     intrinsic :: iso_fortran_env
     use, non_intrinsic :: config
-    use, non_intrinsic :: simulator_using_numerical_flux_base
+    use, non_intrinsic :: pkg_simulator_using_numerical_flux_base
 
 
 
@@ -84,4 +84,4 @@ module simulator_ftcs
 
     end function minval_index_node_ftcs
 
-end module simulator_ftcs
+end module pkg_simulator_ftcs

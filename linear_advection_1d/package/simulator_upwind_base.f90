@@ -1,9 +1,9 @@
-module simulator_upwind_base
+module pkg_simulator_upwind_base
 
     ! required MODULE
     use,     intrinsic :: iso_fortran_env
     use, non_intrinsic :: config
-    use, non_intrinsic :: simulator_using_numerical_flux_base
+    use, non_intrinsic :: pkg_simulator_using_numerical_flux_base
 
 
 
@@ -56,4 +56,4 @@ module simulator_upwind_base
 
     end function numerical_flux_upwind
 
-end module simulator_upwind_base
+end module pkg_simulator_upwind_base

@@ -1,9 +1,9 @@
-module simulator_lax_wendroff
+module pkg_simulator_lax_wendroff
 
     ! required MODULE
     use,     intrinsic :: iso_fortran_env
     use, non_intrinsic :: config
-    use, non_intrinsic :: simulator_lax_base
+    use, non_intrinsic :: pkg_simulator_lax_base
 
 
 
@@ -90,4 +90,4 @@ module simulator_lax_wendroff
 
     end function minval_index_node_lax_wendroff
 
-end module simulator_lax_wendroff
+end module pkg_simulator_lax_wendroff

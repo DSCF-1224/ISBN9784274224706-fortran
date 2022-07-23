@@ -1,9 +1,9 @@
-module simulator_upwind1
+module pkg_simulator_upwind1
 
     ! required MODULE
     use,     intrinsic :: iso_fortran_env
     use, non_intrinsic :: config
-    use, non_intrinsic :: simulator_upwind_base
+    use, non_intrinsic :: pkg_simulator_upwind_base
 
 
 
@@ -89,4 +89,4 @@ module simulator_upwind1
 
     end function minval_index_node_upwind1
 
-end module simulator_upwind1
+end module pkg_simulator_upwind1

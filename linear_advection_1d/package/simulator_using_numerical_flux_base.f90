@@ -1,9 +1,9 @@
-module simulator_using_numerical_flux_base
+module pkg_simulator_using_numerical_flux_base
 
     ! required MODULE
     use,     intrinsic :: iso_fortran_env
     use, non_intrinsic :: config
-    use, non_intrinsic :: simulator_base
+    use, non_intrinsic :: pkg_simulator_base
 
 
 
@@ -95,4 +95,4 @@ module simulator_using_numerical_flux_base
 
     end function quantity_change_using_numerical_flux
 
-end module simulator_using_numerical_flux_base
+end module pkg_simulator_using_numerical_flux_base

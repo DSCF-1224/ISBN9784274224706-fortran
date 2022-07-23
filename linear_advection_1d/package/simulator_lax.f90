@@ -1,9 +1,9 @@
-module simulator_lax
+module pkg_simulator_lax
 
     ! required MODULE
     use,     intrinsic :: iso_fortran_env
     use, non_intrinsic :: config
-    use, non_intrinsic :: simulator_lax_base
+    use, non_intrinsic :: pkg_simulator_lax_base
 
 
 
@@ -90,4 +90,4 @@ module simulator_lax
 
     end function minval_index_node_lax
 
-end module simulator_lax
+end module pkg_simulator_lax
