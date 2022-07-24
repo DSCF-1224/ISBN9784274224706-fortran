@@ -4,6 +4,9 @@ set yrange [-1.0:2.0]
 set format x '%2.1f'
 set format y '%2.1f'
 
+set xlabel 'x'
+set ylabel 'q(x)'
+
 set grid
 
 set xzeroaxis linetype -1

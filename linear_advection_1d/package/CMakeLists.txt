@@ -1,3 +1,7 @@
+if (NOT (EXISTS ${CMAKE_Fortran_MODULE_DIRECTORY}/flux_limiter))
+    add_subdirectory( ${CMAKE_CURRENT_SOURCE_DIR}/../../flux_limiter ${CMAKE_Fortran_MODULE_DIRECTORY}/flux_limiter )
+endif()
+
 if (NOT (EXISTS ${CMAKE_Fortran_MODULE_DIRECTORY}/simple_errmsg_handler))
     add_subdirectory( ${CMAKE_CURRENT_SOURCE_DIR}/../../simple_errmsg_handler ${CMAKE_Fortran_MODULE_DIRECTORY}/simple_errmsg_handler )
 endif()
@@ -10,6 +14,7 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/config.f90
     ${CMAKE_CURRENT_SOURCE_DIR}/simulator_base.f90
     ${CMAKE_CURRENT_SOURCE_DIR}/simulator_ftcs.f90
+    ${CMAKE_CURRENT_SOURCE_DIR}/simulator_harten_yee.f90
     ${CMAKE_CURRENT_SOURCE_DIR}/simulator_lax_base.f90
     ${CMAKE_CURRENT_SOURCE_DIR}/simulator_lax.f90
     ${CMAKE_CURRENT_SOURCE_DIR}/simulator_lax_wendroff.f90
@@ -19,6 +24,7 @@ add_library(
     ${CMAKE_CURRENT_SOURCE_DIR}/simulator_using_numerical_flux_base.f90
 )
 
+target_link_libraries( _linear_advection_1d PRIVATE _flux_limiter          )
 target_link_libraries( _linear_advection_1d PRIVATE _simple_errmsg_handler )
 
 # EOF

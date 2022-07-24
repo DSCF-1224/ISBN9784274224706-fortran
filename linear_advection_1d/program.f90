@@ -4,6 +4,7 @@ program linear_advection_1d
     use ,     intrinsic :: iso_fortran_env
     use , non_intrinsic :: config
     use , non_intrinsic :: pkg_simulator_ftcs
+    use , non_intrinsic :: pkg_simulator_harten_yee
     use , non_intrinsic :: pkg_simulator_lax
     use , non_intrinsic :: pkg_simulator_lax_wendroff
     use , non_intrinsic :: pkg_simulator_upwind1
@@ -76,6 +77,7 @@ program linear_advection_1d
 
         ! variable(s) for this PROGRAM
         type( type_simulator_ftcs         ) :: simulator_ftcs
+        type( type_simulator_harten_yee   ) :: simulator_harten_yee
         type( type_simulator_lax          ) :: simulator_lax
         type( type_simulator_lax_wendroff ) :: simulator_lax_wendroff
         type( type_simulator_upwind1      ) :: simulator_upwind1
@@ -96,6 +98,14 @@ program linear_advection_1d
         ! STEP.02
         ! preparation of the simulations
         call simulator_ftcs%initialize_field( &!
+            num_time_steps          = num_time_steps          , &!
+            characteristic_velocity = characteristic_velocity , &!
+            step_node               = step_node               , &!
+            step_time               = step_time               , &!
+            initial_condition       = initial_quantity(:)       &!
+        )
+
+        call simulator_harten_yee%initialize_field( &!
             num_time_steps          = num_time_steps          , &!
             characteristic_velocity = characteristic_velocity , &!
             step_node               = step_node               , &!
@@ -140,6 +150,7 @@ program linear_advection_1d
         ! STEP.03
         ! execute the simulations
         call simulator_ftcs         % execute( '../result/' // folder_path // '/ftcs.dat'         )
+        call simulator_harten_yee   % execute( '../result/' // folder_path // '/harten_yee.dat'   )
         call simulator_lax          % execute( '../result/' // folder_path // '/lax.dat'          )
         call simulator_lax_wendroff % execute( '../result/' // folder_path // '/lax_wendroff.dat' )
         call simulator_upwind1      % execute( '../result/' // folder_path // '/upwind1.dat'      )

@@ -15,8 +15,16 @@ graph_title = 'FTCS'
 file_name   = 'ftcs.dat'
 load 'plot_graph.plt'
 
+graph_title = 'Harten-Yee'
+file_name   = 'Harten_Yee.dat'
+load 'plot_graph.plt'
+
 graph_title = 'Lax'
 file_name   = 'lax.dat'
+load 'plot_graph.plt'
+
+graph_title = 'Lax-Wendroff'
+file_name   = 'lax_wendroff.dat'
 load 'plot_graph.plt'
 
 graph_title = 'Lax-Wendroff'
